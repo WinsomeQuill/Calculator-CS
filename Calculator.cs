@@ -9,6 +9,10 @@ namespace calculator
 {
     class Program
     {
+        static void ConsoleClear()
+        {
+            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
         static void Main(string[] args)
         {
             //-----------------------------[Переменные]-----------------------------//
@@ -22,11 +26,13 @@ namespace calculator
                 //-----------------------------[Меню]-----------------------------//
                 Console.WriteLine("Calc - калькулятор");
                 Console.WriteLine("Version(ver) - версия");
-                Console.WriteLine("Help - помощь");
+                Console.WriteLine("Clear - очистить консоль");
+                Console.WriteLine("Help - помощь\n");
+                Console.Write("Line: ");
                 line = Convert.ToString(Console.ReadLine());
 
                 //-----------------------------[Код калькулятора]-----------------------------//
-                if (line == "calc")
+                if (line == "calc" || line == "Calc")
                 {
                     try
                     {
@@ -155,7 +161,7 @@ namespace calculator
                     }
                 }
                 //-----------------------------[Код help меню]-----------------------------//
-                if (line == "help")
+                if (line == "help" || line == "Help")
                 {
                     int hengine = 1;
                     do
@@ -192,6 +198,16 @@ namespace calculator
                         }
                     }
                     while (hengine == 1);
+                }
+
+                if (line == "Clear" || line == "clear")
+                {
+                    ConsoleClear();
+                }
+
+                if (line != "Calc" || line != "calc" || line != "Clear" || line != "clear" || line != "Help" || line != "help" || line != "ver" || line != "Ver" || line != "version" || line != "Version")
+                {
+                    Console.WriteLine("Комманда {0} не найдена!\n", line);
                 }
             } //Цикл
             while (engine == 1) ;
