@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Threading;
 
 namespace calculator
@@ -13,6 +13,11 @@ namespace calculator
         {
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }
+/*
+        static void ConsoleRestart()
+        {
+        
+        } */
         static void Main(string[] args)
         {
             //-----------------------------[Переменные]-----------------------------//
@@ -27,7 +32,8 @@ namespace calculator
                 Console.WriteLine("Calc - калькулятор");
                 Console.WriteLine("Version(ver) - версия");
                 Console.WriteLine("Clear - очистить консоль");
-                Console.WriteLine("Help - помощь\n");
+                Console.WriteLine("Help - помощь");
+                Console.WriteLine("Exit - выход\n");
                 Console.Write("Line: ");
                 line = Convert.ToString(Console.ReadLine());
 
@@ -199,18 +205,61 @@ namespace calculator
                     }
                     while (hengine == 1);
                 }
+                
+                if (line == "Exit" || line == "exit")
+                {
+                	Console.WriteLine("Завершаем процесс...");
+        			if (engine == 1)
+        			{
+        			Console.WriteLine("Процесс завершен.");
+        			engine = 0;
+        			}
+        			else
+        			{
+        			Console.WriteLine("Упс... Что-то пошло не так ×_×");
+        			}
+                }
+                
+                if (line == "Restart" || line == "restart")
+                {
+                	Console.WriteLine("Завершаем процесс...");
+        			if (engine == 1)
+        			{
+        			Console.WriteLine("Перезагрузка...");
+        			engine = 0;
+        			engine = 1;
+        				if (engine == 1)
+        				{
+        					Console.Write("[ ");
+        					Console.ForegroundColor = ConsoleColor.Yellow;
+        					Console.Write("WAIT");
+        					Console.ForegroundColor = ConsoleColor.White;
+        					Console.Write(" ] Restart script...");
+        					Console.Write("\n[ ");
+        					Console.ForegroundColor = ConsoleColor.Green;
+        					Console.Write("OK");
+        					Console.ForegroundColor = ConsoleColor.White;
+        					Console.Write(" ] Restart script...\n");
+        					Console.WriteLine("Нажмите любую кнопку чтобы продолжить...");
+        					Console.ReadKey();
+        				}
+        			}
+        			else
+        			{
+        			Console.WriteLine("Упс... Что-то пошло не так ×_×");
+        			}
+               	}
 
                 if (line == "Clear" || line == "clear")
                 {
                     ConsoleClear();
                 }
-
                 if (line != "Calc" || line != "calc" || line != "Clear" || line != "clear" || line != "Help" || line != "help" || line != "ver" || line != "Ver" || line != "version" || line != "Version")
                 {
                     Console.WriteLine("Комманда {0} не найдена!\n", line);
                 }
             } //Цикл
-            while (engine == 1) ;
+            while (engine == 1);
         }   
     }
 }
